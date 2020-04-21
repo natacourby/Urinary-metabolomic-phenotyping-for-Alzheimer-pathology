@@ -1,3 +1,5 @@
+# Requirements 
+Code was tested on R version 3.4.3
 # Data colllections
 Large data files are gzipped and should be unzipped before usage.
 ## Covariates
@@ -9,7 +11,8 @@ Large data files are gzipped and should be unzipped before usage.
 ## Genomics data
 /data/dna_matrices/
 
-Are not available on github due to size limitations, but can be obtained from the synapse or from the corresponding author by request
+On github only first parts of dna matrices are available (500,000 SNP records) due to size limitations, full versions can be obtained from the synapse or from the corresponding author by request.
+
 * dna_matrix_UHPOS.tsv.gz
 * dna_matrix_NMR_Urine.tsv.gz
 
