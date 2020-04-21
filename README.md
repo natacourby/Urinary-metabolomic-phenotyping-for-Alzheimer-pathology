@@ -1,30 +1,31 @@
 # Data colllections
-
+Large data files are gzipped and should be unzipped before usage.
 ## Covariates
 /data/covariates/
-Covariates_UHPOS.txt
-Covariates_NMR_Nosey_Urine.txt
-Covariates_EigenMS_format.txt
+* Covariates_UHPOS.txt
+* Covariates_NMR_Urine.txt
+* Covariates_EigenMS_format.txt
 
 ## Genomics data
 /data/dna_matrices/
-dna_matrix_UHPOS.tsv
-dna_matrix_NMR_Nosey_Urine.tsv
+Are not available on github due to size limitations, can be obtained from the synapse or from the corresponding author by request
+* dna_matrix_UHPOS.tsv.gz
+* dna_matrix_NMR_Urine.tsv.gz
 
 ## Original metabolomics data
 /data/metabolomics_matrices/
-NMR_Nosey_Urine_original.txt
-UHPOS_original.csv
+* NMR_Urine_original.txt.gz
+* UHPOS_original.csv
 
 ## Normalised metabolomics data
 /data/metabolomics_matrices/normalised/
-NMR_Nosey_Urine.tsv
-UHPOS.tsv
+* NMR_Urine.tsv.gz
+* UHPOS.tsv
 
 ## Permuted by samples metabolimics data
 /data/metabolomics_matrices/normalised/permuted/
-NMR_Nosey_Urine_permuted.tsv
-UHPOS_permuted.tsv
+* NMR_Nosey_Urine_permuted.tsv.gz
+* UHPOS_permuted.tsv
 
 The full dataset availability:
 Data from the AddNeuroMed study, including clinical and molecular data is available at Sage Bionetworks AD community portal https://www.synapse.org/#!Synapse:syn2790911/wiki/235388. Data from the current MS will be added to this dataset on publication.
