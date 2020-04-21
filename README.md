@@ -24,7 +24,7 @@ Are not available on github due to size limitations, can be obtained from the sy
 
 ## Permuted by samples metabolimics data
 /data/metabolomics_matrices/normalised/permuted/
-* NMR_Nosey_Urine_permuted.tsv.gz
+* NMR_Urine_permuted.tsv.gz
 * UHPOS_permuted.tsv
 
 The full dataset availability:
