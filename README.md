@@ -58,11 +58,11 @@ QN_normalize("./data/metabolomics_matrices/NMR_Nosey_Urine_original.txt","./data
 
 # Metabolic QTL analysis
 ```
-./scripts/feature_selection.R
+./scripts/run_mqtl.R "NMR_Urine"
 ```
 # Feature selection with Random Forests
 ```
-./scripts/
+./scripts/feature_selection.R
 ```
 
 # Additional scripts (GWAS Catalog search, plots, etc.)
