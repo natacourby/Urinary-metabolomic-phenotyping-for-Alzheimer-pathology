@@ -101,11 +101,13 @@ feature_selection_mqtl_per_assay("NMR_Urine")
 
 feature_selection_mqtl_snps()
 feature_selection_mqtl_metabolites()
-
-snps_intersection("./results/gwas_snps.txt")
+```
+Intersection between GWAS SNPs from Alzheimer's pathology related traits and mQTL SNPs:
 
 ```
-
+source("./scripts/QTL_results_selection.R")
+snps_intersection("./results/gwas_snps.txt")
+```
 # Feature selection with Random Forests
 
 We've tried multiple feature selection methods: linear regression, feature selection by correlation (WEKA) and Random Forests (RF) for feature selection. RF gave us the best results.
