@@ -99,8 +99,10 @@ feature_selection_mqtl_per_assay("URPOS")
 feature_selection_mqtl_per_assay("URNEG")
 feature_selection_mqtl_per_assay("NMR_Urine")
 
-feature_selection_mqtl_snps
-feature_selection_mqtl_metabolites
+feature_selection_mqtl_snps()
+feature_selection_mqtl_metabolites()
+
+snps_intersection("./results/gwas_snps.txt")
 
 ```
 
