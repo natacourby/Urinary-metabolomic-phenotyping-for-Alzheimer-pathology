@@ -1,5 +1,10 @@
 # Requirements 
 Code was tested on R version 3.4.3
+
+R libraries:
+* MatrixEQTL
+* lattice
+* biomaRt
 # Data colllections
 Large data files are gzipped and should be unzipped before usage. on github only two datasets out of 4 analysed in the paper are available (genomics data partly).
 ## Covariates
@@ -80,6 +85,7 @@ Feature reduction using mQTL significance (FDR threshold 0.01) results with geno
 We've tried multiple feature selection methods: linear regression, feature selection by correlation (WEKA) and Random Forests (RF) for feature selection. RF gave us the best results.
 
 ```
+source("./scripts/feature_selection.R")
 ./scripts/feature_selection.R
 ```
 

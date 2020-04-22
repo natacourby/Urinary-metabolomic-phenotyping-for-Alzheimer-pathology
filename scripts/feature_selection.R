@@ -1,29 +1,32 @@
-################################################################################
-# Feature selection by Linear Regression with diagnosis in a model 
-################################################################################
-threshold <- 0.01
-base <- "UHPOS"
+##################################################################################################
+# Feature selection methods
+# - Linear Regression with diagnosis in a model
+# - WEKA
+# - Random Forests
+##################################################################################################
 
-dna_matrices_dir<-"./data/dna_matrices/"
-met_matrices_dir<-"./data/metabolomics_matrices/normalised/"
-cov_matrices_dir<-"./data/covariates/"
+# Linear Regression with diagnosis in a model 
+feature_selection_mqtl <- function(base){
+  threshold <- 0.01
+  dna_matrices_dir<-"./data/dna_matrices/"
+  met_matrices_dir<-"./data/metabolomics_matrices/normalised/"
+  cov_matrices_dir<-"./data/covariates/"
+  res <- read.table(paste("./results/mqtl_",base,".txt",sep=""),header=T,sep="\t")
+  res_sig <- res[res$FDR<threshold,]
+  
+  write.table(unique(res_sig$SNP),paste(base,"_SNP_sig.txt",sep=""),sep="\t",row.names=F,quote=F)
+  write.table(unique(res_sig$gene),paste(base,"_met_sig.txt",sep=""),sep="\t",row.names=F,quote=F)
+  
+  # Matrices are to big to be processed in R
+  # print(paste("grep -wFf ",base,"_sig_SNP.txt ",dna_matrices_dir,"dna_matrix_",base,".tsv > dna_",base,"_sig.txt",sep=""))
+  # print(paste("grep -wFf ",base,"_sig_met.txt ",met_matrices_dir,base,".tsv > met_",base,"_sig.txt",sep=""))
+  # print(paste("head -1 ",met_matrices_dir,base,".tsv > ",base,"_header.txt",sep=""))
+  # print(paste("cat ",base,"_header.txt met_",base,"_sig.txt > met_",base,"_sig2.txt",sep=""))
+  # print(paste("cat ",base,"_header.txt dna_",base,"_sig.txt > dna_",base,"_sig2.txt",sep=""))
+   
+}
 
-res <- read.table(paste("./results/mqtl_",base,".txt",sep=""),header=T,sep="\t")
-res_sig <- res[res$FDR<threshold,]
 
-# Preparation
-dim(res_sig)
-length(unique(res_sig$SNP))
-length(unique(res_sig$gene))
-
-write.table(unique(res_sig$SNP),paste(base,"_sig_SNP.txt",sep=""),sep="\t",row.names=F,quote=F)
-write.table(unique(res_sig$gene),paste(base,"_sig_met.txt",sep=""),sep="\t",row.names=F,quote=F)
-
-print(paste("grep -wFf ",base,"_sig_SNP.txt ",dna_matrices_dir,"dna_matrix_",base,".tsv > dna_",base,"_sig.txt",sep=""))
-print(paste("grep -wFf ",base,"_sig_met.txt ",met_matrices_dir,base,".tsv > met_",base,"_sig.txt",sep=""))
-print(paste("head -1 ",met_matrices_dir,base,".tsv > ",base,"_header.txt",sep=""))
-print(paste("cat ",base,"_header.txt met_",base,"_sig.txt > met_",base,"_sig2.txt",sep=""))
-print(paste("cat ",base,"_header.txt dna_",base,"_sig.txt > dna_",base,"_sig2.txt",sep=""))
 
 ################################################################################
 # Random forests for feature selection

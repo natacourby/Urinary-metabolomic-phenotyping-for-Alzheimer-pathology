@@ -1,9 +1,11 @@
-# Normalization for MS data
+##################################################################################################
+# Metabolomics data normalisation
+# - Quantile Normalization
+# - EigenMS Normalization wrapping functiin
+##################################################################################################
 
-##################################################################################################
-# Quantile Normalization of metabolomic data
-##################################################################################################
-QN_normalize <- function(file_name, output_file_name){
+# Quantile Normalization
+QN_normalize <- function(file_name,output_file_name){
   met <-read.table(file_name,header=T,sep="\t")
   for (i in 1:nrow(met)){
     mat <- met[i,]
@@ -14,12 +16,9 @@ QN_normalize <- function(file_name, output_file_name){
   write.table(met,output_file_name,sep="\t")
 }
 
-##################################################################################################
-# EigenMS Normalization of metabolomic data
-##################################################################################################
-EigenMS_normalize <- function(file_name, output_file_name, covariates_to_preserve_file_name){
-  # source in the EigenMS and correlation heatmap functions
-  source("EigenMS.R")
+# EigenMS Normalization
+EigenMS_normalize <- function(file_name,output_file_name,covariates_to_preserve_file_name){
+  source("EigenMS.R") # loads EigenMS original functions
   
   cov <- read.table(covariates_to_preserve_file_name,header = T,sep="\t")
   rownames(cov) <- cov$Sample
@@ -50,5 +49,3 @@ EigenMS_normalize <- function(file_name, output_file_name, covariates_to_preserv
   
   write.table(m_ints_norm1$norm_m,output_file_name,sep="\t")
 }
-##################################################################################################
-##################################################################################################

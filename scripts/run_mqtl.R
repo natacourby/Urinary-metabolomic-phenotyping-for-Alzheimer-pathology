@@ -1,13 +1,18 @@
+##################################################################################################
+# mQTL analysis wrapping code
+# 1) runs mQTL, 
+# 2) significant mQTL results are selected using FDR threshold 0.01 
+# 3) significant mQTL results are annotated using biomaRt
+##################################################################################################
 library(biomaRt)
 library(MatrixEQTL)
 
 args <- commandArgs(trailingOnly=TRUE)
 base <- args[1]
 diagnosis <- ""
+source("mqtl.R") # loads mqtl analysis function
 
-
-source("mqtl.R")
-# load snps 
+# Load SNPs 
 SNP_file_name <- paste("./data/dna_matrices/dna_matrix_",base,diagnosis,".tsv",sep="") 
 snps = SlicedData$new();
 snps$fileDelimiter = "\t"; # the TAB character
