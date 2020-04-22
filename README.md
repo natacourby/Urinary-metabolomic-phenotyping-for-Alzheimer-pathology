@@ -80,6 +80,9 @@ Feature reduction using mQTL significance (FDR threshold 0.01) results with geno
 
 Feature reduction using mQTL significance (FDR threshold 0.01) results with genomic annotations and SNPs (SNP-metabolite): ./results/result_NMR_Urine_annot_full.txt
 
+
+Select metabolites based on mQTL significance:
+
 ```
 source("./scripts/QTL_results_selection.R")
 
