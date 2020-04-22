@@ -5,6 +5,11 @@ R libraries:
 * MatrixEQTL
 * lattice
 * biomaRt
+* caret
+* randomForest
+* dplyr
+* Boruta
+
 # Data colllections
 Large data files are gzipped and should be unzipped before usage. on github only two datasets out of 4 analysed in the paper are available (genomics data partly).
 ## Covariates
@@ -12,6 +17,7 @@ Large data files are gzipped and should be unzipped before usage. on github only
 * Covariates_UHPOS.txt
 * Covariates_NMR_Urine.txt
 * Covariates_EigenMS_format.txt
+* Covariates_diagnosis.txt
 
 ## Genomics data
 /data/dna_matrices/
@@ -114,7 +120,8 @@ We've tried multiple feature selection methods: linear regression, feature selec
 
 ```
 source("./scripts/feature_selection.R")
-./scripts/feature_selection.R
+./scripts/RF_choose_set_and_classifier.R
+./scripts/RF_parameters_tuning.R
 ```
 
 # Additional scripts (GWAS Catalog search, plots, etc.)
