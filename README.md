@@ -80,6 +80,27 @@ Feature reduction using mQTL significance (FDR threshold 0.01) results with geno
 
 Feature reduction using mQTL significance (FDR threshold 0.01) results with genomic annotations and SNPs (SNP-metabolite): ./results/result_NMR_Urine_annot_full.txt
 
+```
+source("./scripts/QTL_results_selection.R")
+
+feature_selection_mqtl_per_assay("UHPOS")
+feature_selection_mqtl_per_assay("NMR_Urine")
+
+```
+
+When all data are available:
+```
+source("./scripts/QTL_results_selection.R")
+feature_selection_mqtl_per_assay("UHPOS")
+feature_selection_mqtl_per_assay("URPOS")
+feature_selection_mqtl_per_assay("URNEG")
+feature_selection_mqtl_per_assay("NMR_Urine")
+
+feature_selection_mqtl_snps
+feature_selection_mqtl_metabolites
+
+```
+
 # Feature selection with Random Forests
 
 We've tried multiple feature selection methods: linear regression, feature selection by correlation (WEKA) and Random Forests (RF) for feature selection. RF gave us the best results.
