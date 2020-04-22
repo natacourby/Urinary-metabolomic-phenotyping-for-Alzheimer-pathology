@@ -1,7 +1,7 @@
 # Requirements 
 Code was tested on R version 3.4.3
 # Data colllections
-Large data files are gzipped and should be unzipped before usage.
+Large data files are gzipped and should be unzipped before usage. on github only two datasets out of 4 analysed in the paper are available (genomics data partly).
 ## Covariates
 /data/covariates/
 * Covariates_UHPOS.txt
@@ -38,7 +38,7 @@ Data from the AddNeuroMed study, including clinical and molecular data is availa
 ```
 source("./scripts/normalization.R")
 ```
-## 1) EigenMS to remove bias of unknown complexity from MS data from “Metabolomics Data Normalization with EigenMS”, Yuliya V. Karpievitch et al. 
+## 1) EigenMS to remove bias of unknown complexity from MS data (“Metabolomics Data Normalization with EigenMS”, Yuliya V. Karpievitch et al.) 
 ```
 EigenMS_normalize(matrix_to_normalize, matrix_EigenMS_result, covariates_matrix_to_preserve)
 
@@ -62,10 +62,23 @@ QN_normalize("./data/metabolomics_matrices/NMR_Nosey_Urine_original.txt","./data
 ```
 
 # Metabolic QTL analysis
+
+We've run this script on a computational cluster using parallel computing and dna matrix separation into chunks. 
+
 ```
 ./scripts/run_mqtl.R "NMR_Urine"
 ```
+
+Results: ./results/mqtl_NMR_Urine.txt.gz
+
+Feature reduction using mQTL significance (FDR threshold 0.01) results with genomic annotations (gene-metabolite): ./results/result_NMR_Urine_annot.txt
+
+Feature reduction using mQTL significance (FDR threshold 0.01) results with genomic annotations and SNPs (SNP-metabolite): ./results/result_NMR_Urine_annot_full.txt
+
 # Feature selection with Random Forests
+
+We've tried multiple feature selection methods: linear regression, feature selection by correlation (WEKA) and Random Forests (RF) for feature selection. RF gave us the best results.
+
 ```
 ./scripts/feature_selection.R
 ```
