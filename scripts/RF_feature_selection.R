@@ -11,8 +11,11 @@ library(randomForest)
 library(dplyr)
 library(caret)
 library(Boruta)
+source("./scripts/feature_selection.R")
 
-feature_selection_RF_model <- function(set, classifier, nr=500){
+nr <- 500
+
+feature_selection_RF_model <- function(set, classifier){
   df_selected <- feature_selection_data_preparation(set,classifier)
   err_rates <- c(0)
   for(i in 1:10){
@@ -26,21 +29,21 @@ feature_selection_RF_model <- function(set, classifier, nr=500){
 
 # 1) Choose set and classifier 
 # Set A: Metabolites only 
-mean_res1_a <- feature_selection_data_preparation("A","I")
-mean_res2_a <- feature_selection_data_preparation("A","II")
-mean_res4_a <- feature_selection_data_preparation("A","III")
+mean_res1_a <- feature_selection_RF_model("A","I")
+mean_res2_a <- feature_selection_RF_model("A","II")
+mean_res4_a <- feature_selection_RF_model("A","III")
 # Set B: Metabolites and SNPs
-mean_res1_b <- feature_selection_data_preparation("B","I")
-mean_res2_b <- feature_selection_data_preparation("B","II")
-mean_res4_b <- feature_selection_data_preparation("B","III")
+mean_res1_b <- feature_selection_RF_model("B","I")
+mean_res2_b <- feature_selection_RF_model("B","II")
+mean_res4_b <- feature_selection_RF_model("B","III")
 # Set C: Metabolites, SNPs and covariates
-mean_res1_c <- feature_selection_data_preparation("C","I")
-mean_res2_c <- feature_selection_data_preparation("C","II")
-mean_res4_c <- feature_selection_data_preparation("C","III")
+mean_res1_c <- feature_selection_RF_model("C","I")
+mean_res2_c <- feature_selection_RF_model("C","II")
+mean_res4_c <- feature_selection_RF_model("C","III")
 # Set D: Metabolites and covariates
-mean_res1_d <- feature_selection_data_preparation("D","I")
-mean_res2_d <- feature_selection_data_preparation("D","II")
-mean_res4_d <- feature_selection_data_preparation("D","III")
+mean_res1_d <- feature_selection_RF_model("D","I")
+mean_res2_d <- feature_selection_RF_model("D","II")
+mean_res4_d <- feature_selection_RF_model("D","III")
 
 err_rates <- cbind(mean_res1_a,mean_res2_a)
 err_rates <- cbind(err_rates,mean_res4_a)
