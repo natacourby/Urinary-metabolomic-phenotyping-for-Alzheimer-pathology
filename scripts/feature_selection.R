@@ -89,6 +89,13 @@ feature_selection_data_preparation <- function(set, classifier){
       df_result <- df[cvrt$Diagnosis %in% c("CTL","ADC"),!(names(df) %in% drops)]
       names(df_result)[names(df_result) == 'Diagnosis1'] <- 'Diagnosis'
     }
+    
+    # Classifier IV: cMCI/sMCI
+    if (classifier=="IV"){
+      drops <- c("Diagnosis2","Diagnosis3")
+      df_result <- df[cvrt$Diagnosis %in% c("cMCI","sMCI"),!(names(df) %in% drops)]
+      names(df_result)[names(df_result) == 'Diagnosis1'] <- 'Diagnosis'
+    }
   }
   
   # B: Metabolites and SNPs, C: Metabolites, SNPs and covariates

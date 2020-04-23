@@ -1,0 +1,33 @@
+Metabolic_features	Assay	Annotation	Drug
+X5.01_535.1753m.z	UHPOS	Diltiazem glucuronide	T
+X5.51_551.1705m.z	UHPOS	Diltiazem-O-glucuronide	T
+X2.58_151.0635n	URPOS	Paracetamol	T
+X2.31_288.0117n	URPOS	Paracetamol sulphate	T
+X2.59_318.0226n	URPOS	3-methoxy-paracetamol sulphate	T
+X3.07_283.1580n	UHPOS	Quinine	T
+X6.13_685.2611m.z	URNEG	Pregnenolone sulfate N-acetylglucosamine	F
+X6.13_600.2850m.z	URNEG	Pregnenolone sulfate N-acetylglucosamine	F
+X6.13_600.4780m.z	URNEG	Pregnenolone sulfate N-acetylglucosamine	F
+X6.13_668.2724m.z	URNEG	Pregnenolone sulfate N-acetylglucosamine	F
+X6.13_736.2562m.z	URNEG	Pregnenolone sulfate N-acetylglucosamine	F
+X6.30_602.2977m.z	URNEG	Pregnanediol sulfate N-acetylglucosamine	F
+X5.04_614.2623m.z	URNEG	Hydroxylated pregnanolone sulfate N-acetylglucosamine isomer 1*	F
+X5.85_614.2613m.z	URNEG	Hydroxylated pregnanolone sulfate N-acetylglucosamine isomer 2*	F
+X8.01_639.3614n	URNEG	Taurochenodeoxycholic or Taurodeoxycholic acid N-acetylglucosaminide*	F
+X2.03_112.0501m.z	UHPOS	2-O-methylcytidine	F
+X3.80_258.1087m.z	UHPOS	5-methylcytidine	F
+X3.80_126.0658m.z	UHPOS	5-methylcytidine	F
+X4.55_190.2275n	UHPOS	Butyryl or isobutyryl carnitine*	F
+X2.62_125.0837n	URPOS	N-acetylisoputreanine-gamma-lactam	F
+X2.62_92.1133n	URPOS	N-acetylisoputreanine-gamma-lactam	F
+X3.74_249.0860n	UHPOS	S-adenosylmethionine isomer*	F
+X1.2051	1H NMR	3-aminoisobutyrate	F
+X1.1952	1H NMR	3-aminoisobutyrate	F
+X2.873	1H NMR	Trimethylamine	F
+X1.7312	1H NMR	Lysine	F
+X1.21_229.2724m.z	URPOS	N,N,N-trimethyl-L-alanyl-L-proline betaine	F
+X1.72_229.2717m.z	URPOS	N,N,N-trimethyl-L-alanyl-L-proline betaine	F
+X5.2831	1H NMR	Galactose	F
+X5.276	1H NMR	Galactose	F
+X5.4085	1H NMR	Sucrose	F
+X4.64_637.1565m.z	URPOS	Glutathione	F

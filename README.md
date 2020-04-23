@@ -166,3 +166,12 @@ Intersection with GWAS Catalog SNPs.
 ./scripts/GWAS_Catalog.R
 ```
 
+# Results for annotated metabolites
+Annotated metabolites are availbale in the file: "./results/annotated_metabolites.txt".
+
+1. RF using annotated metabolites for AD/CTL classes and then using the same model for cMCI/sMCI classes for validation since they were not used for training.
+2. Logistic regression using annotated metabolites for AD/CTL classes and then using the same model for cMCI/sMCI classes for validation since they were not used for training.
+
+```
+./scripts/annotated_metabolites.R
+```
