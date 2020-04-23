@@ -134,11 +134,19 @@ The following sets of features were considered:
 
 [sets]: https://github.com/natacourby/Urinary-metabolomic-phenotyping-for-Alzheimer-pathology/blob/master/images/sets.png "Sets of features"
 
-In addition to the feature set selection problem there was a problem of classification itself. The number of samples per class is imbalanced, especially the cMCI class. Since decision trees, and as a result RF, are sensitive to class imbalance we decided in addition to the original 4 classes to test different binary classifiers:
+In addition to the feature set selection problem there was a problem of classification itself. The number of samples per class is imbalanced, especially the cMCI class. 
+
+|                     | AD  | CTL | cMCI | sMCI |
+| --------------------|:---:| ---:|-----:|-----:|
+| Metabolites only    | 162 | 133 | 36   | 140  |
+| Metabolites and SNPs| 121 | 119 | 23   | 80   |
+
+Since decision trees, and as a result RF, are sensitive to class imbalance we decided in addition to the original 4 classes to test different binary classifiers:
  * I - AD/CTL/cMCI/sMCI (4 original classes), 
  * II - AD+cMCI/CTL+sMCI (2 classes when sMCI class is remapped to CTL and cMCI is remapped to AD), 
  * III - AD/CTL (2 classes when MCIs classes are removed).
 
+The following tasks are covered in RF_feature_selection.R script:
 1. Choose set and classifier
 2. Tune RF parameters for chosen dataset (set and classifier)
 3. Run final RF model with importance parameter to rank metabolites
