@@ -116,22 +116,28 @@ snps_intersection("./results/gwas_snps.txt")
 ```
 # Feature selection with Random Forests
 
-We've tried multiple feature selection methods: linear regression, feature selection by correlation (WEKA) and Random Forests (RF) for feature selection. RF gave us the best results.
+We've tried multiple feature selection methods: linear regression, Recursive Feature Elimination (RFE), Learning Vector Quantization (LVQ), feature selection by correlation and Random Forests (RF). RF gave us the best results.
 
 NB! RF is used to select the most important metabolomic features for further annotation, not to create the prediction model. We are aware of overfitting and do not proposing to use the final model to predict Alzheimer's disease. One more time, RF is used for the selection of the important features. See https://chrisalbon.com/machine_learning/trees_and_forests/feature_selection_using_random_forest/, https://doi.org/10.1016/j.csda.2012.09.020, etc.
 
-1. Choose set and classifier
+RF method was chosen for solution of the classification problem since it performs implicit feature selection and provides a good indicator of feature importance for the ranking. RF has relatively good accuracy and robustness and it is easy to apply.
 
-  Sets:
-  * A - Metabolites only, 
-  * B - Metabolites and SNPs,
-  * C - Metabolites, SNPs and covariates,
-  * D - Metabolites and covariates
-  
-  Classifiers:
-  * I - AD/CTL/cMCI/sMCI, 
-  * II - AD+cMCI/CTL+sMCI, 
-  * III - AD/CTL
+The main focus of this study is on metabolites. However, there are also 6923 SNPs that metabolites are associated with and 9 SNPs found in the results of the GWAS. Finally, covariates available for the samples: age, gender and data collection centre. This extra data can help to classify samples more accurately. 
+
+The following sets of features were considered: 
+ * A - Metabolites only, 
+ * B - Metabolites and SNPs,
+ * C - Metabolites, SNPs and covariates,
+ * D - Metabolites and covariates.
+
+[sets]: https://github.com/natacourby/Urinary-metabolomic-phenotyping-for-Alzheimer-pathology/blob/master/images/sets.png "Sets of features"
+
+In addition to the feature set selection problem there was a problem of classification itself. The number of samples per class is imbalanced, especially the cMCI class. Since decision trees, and as a result RF, are sensitive to class imbalance we decided in addition to the original 4 classes to test different binary classifiers:
+ * I - AD/CTL/cMCI/sMCI (4 original classes), 
+ * II - AD+cMCI/CTL+sMCI (2 classes when sMCI class is remapped to CTL and cMCI is remapped to AD), 
+ * III - AD/CTL (2 classes when MCIs classes are removed).
+
+1. Choose set and classifier
 2. Tune RF parameters for chosen dataset (set and classifier)
 3. Run final RF model with importance parameter to rank metabolites
 
