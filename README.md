@@ -121,15 +121,15 @@ We've tried multiple feature selection methods: linear regression, feature selec
 NB! RF is used to select the most important metabolomic features for further annotation, not to create the prediction model. We are aware of overfitting and do not proposing to use the final model to predict Alzheimer's disease. One more time, RF is used for the selection of the important features. See https://chrisalbon.com/machine_learning/trees_and_forests/feature_selection_using_random_forest/, https://doi.org/10.1016/j.csda.2012.09.020, etc.
 
 1. Choose set and classifier
-⋅⋅Sets:
-⋅⋅* A - Metabolites only, 
-⋅⋅* B - Metabolites and SNPs,
-⋅⋅* C - Metabolites, SNPs and covariates,
-⋅⋅* D - Metabolites and covariates
-⋅⋅Classifiers:
-⋅⋅* I - AD/CTL/cMCI/sMCI, 
-⋅⋅* II - AD+cMCI/CTL+sMCI, 
-⋅⋅* III - AD/CTL
+  Sets:
+  * A - Metabolites only, 
+  * B - Metabolites and SNPs,
+  * C - Metabolites, SNPs and covariates,
+  * D - Metabolites and covariates
+  Classifiers:
+  * I - AD/CTL/cMCI/sMCI, 
+  * II - AD+cMCI/CTL+sMCI, 
+  * III - AD/CTL
 2. Tune RF parameters for chosen dataset (set and classifier)
 3. Run final RF model with importance parameter to rank metabolites
 
