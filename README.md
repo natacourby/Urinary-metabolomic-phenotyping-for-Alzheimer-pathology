@@ -118,6 +118,8 @@ snps_intersection("./results/gwas_snps.txt")
 
 We've tried multiple feature selection methods: linear regression, feature selection by correlation (WEKA) and Random Forests (RF) for feature selection. RF gave us the best results.
 
+NB! RF is used to select the most important metabolomic features for further annotation, not to create the prediction model. We are aware of overfitting and do not proposing to use the final model to predict Alzheimer's disease. One more time, RF is used for the selection of the important features. See https://chrisalbon.com/machine_learning/trees_and_forests/feature_selection_using_random_forest/, https://doi.org/10.1016/j.csda.2012.09.020, etc.
+
 ```
 source("./scripts/feature_selection.R")
 ./scripts/RF_choose_set_and_classifier.R
