@@ -74,7 +74,7 @@ cols <- c("#f58231",
 # Line types for classifiers (I, II, III)
 ltys <- c(2,3,1,2,3,1,2,3,1,2,3,1)
 
-png("./results/RF_all_sets.png")
+png("./images/RF_all_sets.png")
 matplot(1:nr , err_rates, col=cols,type="l",lty=ltys, ylab="OOB error",xlab="trees")
 legend("topright",
        legend=c("Set A, Classifier I","Set A, Classifier II","Set A, Classifier III",
@@ -90,7 +90,7 @@ min(mean_res4_a)
 min(mean_res4_d)
 # Set D, Classifier III - smallest OOB = 0.02847458
 which(mean_res4_d==min(mean_res4_d))
-#471
+#477
 
 # 2) Tune RF parameters
 data_set <- feature_selection_data_preparation("D","III")
@@ -161,7 +161,7 @@ lines(rbind(names,names,NA),rbind(mean_res-sd_res,mean_res+sd_res,NA))
 library(ggplot2)
 dat$highlight <- ifelse(dat$ntree %in% c(x_min), "red","black")
 ticks <- data.frame (t = c(250, 500, x_min, 1000))
-png("./results/RF_SetD_ClassifierIII_results_ntree.png")
+png("./images/RF_SetD_ClassifierIII_results_ntree.png")
 ggplot(dat, aes(x = ntree, y = OOB)) +
   geom_line() +
   geom_ribbon(aes(ymin = OOB - sd,
@@ -196,7 +196,7 @@ lines(rbind(names,names,NA),rbind(mean_res-sd_res,mean_res+sd_res,NA))
 library(ggplot2)
 dat$highlight <- ifelse(dat$ntree %in% c(x_min), "red","black")
 ticks <- data.frame (t = c(0, x_min, 500,1000,1500))
-png("./results/RF_SetD_ClassifierIII_results_mtree.png")
+png("./images/RF_SetD_ClassifierIII_results_mtree.png")
 ggplot(dat, aes(x = mtry, y = OOB)) +
   geom_line() +
   geom_ribbon(aes(ymin = OOB - sd,

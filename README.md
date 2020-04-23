@@ -9,6 +9,7 @@ R libraries:
 * randomForest
 * dplyr
 * Boruta
+* gwascat (Bioconductor)
 
 # Data colllections
 Large data files are gzipped and should be unzipped before usage. on github only two datasets out of 4 analysed in the paper are available (genomics data partly).
