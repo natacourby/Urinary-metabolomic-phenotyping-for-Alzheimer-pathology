@@ -129,6 +129,8 @@ The following sets of features were considered:
  * B - Metabolites and SNPs,
  * C - Metabolites, SNPs and covariates,
  * D - Metabolites and covariates.
+ 
+![Sets of features][sets]
 
 [sets]: https://github.com/natacourby/Urinary-metabolomic-phenotyping-for-Alzheimer-pathology/blob/master/images/sets.png "Sets of features"
 
