@@ -157,12 +157,12 @@ source("./scripts/feature_selection.R")
 ./scripts/RF_feature_selection.R
 ```
 
-# Additional scripts (GWAS Catalog search, plots, etc.)
+# GWAS Catalog
 Intersection with GWAS Catalog SNPs.
 1. Search by SNPs (SNP intersection)
 2. Search by genomic regions (genomic regions intersection)
 
 ```
-./scripts/additional/GWAS_Catalog.R
+./scripts/GWAS_Catalog.R
 ```
 
