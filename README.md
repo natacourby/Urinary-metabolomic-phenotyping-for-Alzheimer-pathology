@@ -10,6 +10,7 @@ R libraries:
 * dplyr
 * Boruta
 * gwascat (Bioconductor)
+* ggplot2
 
 # Data colllections
 Large data files are gzipped and should be unzipped before usage. on github only two datasets out of 4 analysed in the paper are available (genomics data partly).
@@ -158,7 +159,7 @@ source("./scripts/feature_selection.R")
 ```
 
 # GWAS Catalog
-Intersection with GWAS Catalog SNPs.
+Our mQTL results intersection with GWAS Catalog SNPs.
 1. Search by SNPs (SNP intersection)
 2. Search by genomic regions (genomic regions intersection)
 
@@ -167,10 +168,10 @@ Intersection with GWAS Catalog SNPs.
 ```
 
 # Results for annotated metabolites
-Annotated metabolites are availbale in the file: "./results/annotated_metabolites.txt".
+Annotated metabolites are available in the file: "./results/annotated_metabolites.txt".
 
-1. RF using annotated metabolites for AD/CTL classes and then using the same model for cMCI/sMCI classes for validation since they were not used for training.
-2. Logistic regression using annotated metabolites for AD/CTL classes and then using the same model for cMCI/sMCI classes for validation since they were not used for training.
+1. RF using only 32 annotated metabolites for AD/CTL classes and then using the same model for cMCI/sMCI classes for validation since they were not used for training. Repeated without drugs (26 annotated metabolites). 
+2. Logistic regression using only 32 annotated metabolites for AD/CTL classes and then using the same model for cMCI/sMCI classes for validation since they were not used for training. Repeated without drugs (26 annotated metabolites). 
 
 ```
 ./scripts/annotated_metabolites.R
