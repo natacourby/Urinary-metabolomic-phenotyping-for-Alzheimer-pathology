@@ -176,3 +176,10 @@ Annotated metabolites are available in the file: "./results/annotated_metabolite
 ```
 ./scripts/annotated_metabolites.R
 ```
+
+3. ANOVA for annotated metabolites (MANOVA when there are more than one metabolic features for the metabolite)
+```
+./scripts/ANOVA.R
+```
+Images are stored in "./images/annotated_metabolites".
+Table with ANOVA and other methods results: "./results/annotated_metabolites_ANOVA.csv"
