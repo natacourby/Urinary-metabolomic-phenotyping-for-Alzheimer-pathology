@@ -11,6 +11,7 @@ library(randomForest)
 library(dplyr)
 library(caret)
 library(Boruta)
+library(ggplot2)
 source("./scripts/feature_selection.R")
 
 nr <- 500
@@ -115,7 +116,8 @@ write.csv(tuning_results_ntree,"./results/RF_SetD_ClassifierIII_results_ntree.cs
 
 res <- matrix(tuning_results_ntree$oob,nrow=10)
 mean_res <- apply(res,2,mean)
-ntree_selected <-names[which(mean_res==min(mean_res))]
+i <- which(mean_res==min(mean_res))
+ntree_selected <-i*10
 
 # MTRY 
 mtry_fixed <- ncol(data_set)
@@ -131,9 +133,10 @@ for (mtry in mtry_seq) {
 }
 write.csv(tuning_results_mtry,"./results/RF_SetD_ClassifierIII_results_mtry.csv",row.names = F)
 
-res <- matrix(tuning_results_mtrye$oob,nrow=10)
+res <- matrix(tuning_results_mtry$oob,nrow=10)
 mean_res <- apply(res,2,mean)
-mtry_selected <-names[which(mean_res==min(mean_res))]
+i <- which(mean_res==min(mean_res))
+mtry_selected <-i*10
 
 #NTREE
 res <- tuning_results_ntree
@@ -158,10 +161,9 @@ plot(names,mean_res,pch=19,xlab="ntree",ylab="OOB error rate",main="Set D, Class
 lines(rbind(names,names,NA),rbind(mean_res-sd_res,mean_res+sd_res,NA))
 
 #Plot version 2
-library(ggplot2)
 dat$highlight <- ifelse(dat$ntree %in% c(x_min), "red","black")
 ticks <- data.frame (t = c(250, 500, x_min, 1000))
-png("./images/RF_SetD_ClassifierIII_results_ntree.png")
+png("./images/RF_ntree_tuning.png")
 ggplot(dat, aes(x = ntree, y = OOB)) +
   geom_line() +
   geom_ribbon(aes(ymin = OOB - sd,
@@ -193,10 +195,9 @@ plot(names,mean_res,pch=19,xlab="ntree",ylab="OOB error",main="Set D, Classifier
 lines(rbind(names,names,NA),rbind(mean_res-sd_res,mean_res+sd_res,NA))
 
 #Plot version 2
-library(ggplot2)
-dat$highlight <- ifelse(dat$ntree %in% c(x_min), "red","black")
+dat$highlight <- ifelse(dat$mtry %in% c(x_min), "red","black")
 ticks <- data.frame (t = c(0, x_min, 500,1000,1500))
-png("./images/RF_SetD_ClassifierIII_results_mtree.png")
+png("./images/RF_mtree_tuning.png")
 ggplot(dat, aes(x = mtry, y = OOB)) +
   geom_line() +
   geom_ribbon(aes(ymin = OOB - sd,
@@ -206,13 +207,11 @@ ggplot(dat, aes(x = mtry, y = OOB)) +
   scale_x_continuous(breaks=c(ticks$t)) + 
   theme(axis.text=element_text(size=14),
         axis.title=element_text(size=16))
-#scale_x_continuous(breaks=seq(10, 1540, 100)) 
 dev.off()
 
 # 3) Run final RF model with importance parameter to rank metabolites
-
 model <- randomForest(Diagnosis ~ ., data = data_set, ntree=ntree_selected, mtry=mtry_selected, importance=TRUE)
-importance    <- importance(model)
+importance    <- randomForest::importance(model)
 varImportance <- data.frame(Variables = row.names(importance), Importance = round(importance[ ,'MeanDecreaseGini'],2))
 
 #Create a rank variable based on importance
@@ -235,5 +234,6 @@ varImportance[varImportance$Variables %in% getSelectedAttributes(boruta.train, w
 boruta.df <- attStats(final.boruta)
 print(boruta.df)
 
-write.csv(getSelectedAttributes(boruta.train, withTentative = T),"./results/Boruta_feature_selected.txt", row.names = FALSE)
+write.csv(getSelectedAttributes(boruta.train, withTentative = T),"./results/RF_Boruta_features_ranked.txt", row.names = FALSE)
+write.csv(varImportance,"./results/RF_features_ranked.txt", row.names = FALSE)
 
